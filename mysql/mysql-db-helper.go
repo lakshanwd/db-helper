@@ -5,11 +5,11 @@ import (
 	"database/sql"
 )
 
-//delegate function for sql data read
-type delegate func(rows *sql.Rows, collection *list.List)
+//Delegate - function for parse data from sql cursor
+type Delegate func(rows *sql.Rows, collection *list.List)
 
 //ExecuteReader - executes @query and returns results in a list
-func ExecuteReader(db *sql.DB, query string, fn delegate, params ...interface{}) (data *list.List, err error) {
+func ExecuteReader(db *sql.DB, query string, fn Delegate, params ...interface{}) (data *list.List, err error) {
 	data = list.New()
 	if rows, err := db.Query(query, params...); err == nil {
 		defer rows.Close()
