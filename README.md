@@ -3,7 +3,7 @@
 A collection of database helper functions
 
 ### supported database clients
-* mariadb
+* maria-db
 * mysql
 
 ____
